@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Olimpiada Potosina de Informática
 
 You can use the [editor on GitHub](https://github.com/Olimpiada-Potosina-de-Informatica/Olimpiada-Potosina-de-Informatica.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
