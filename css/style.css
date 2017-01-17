@@ -13,7 +13,9 @@ p{
 #menu_index_chico{
         display: none;
 }
-
+#menu_index{
+        display: inline;
+}
 .parallax-container {
   min-height: 380px;
   line-height: 0;
@@ -33,7 +35,7 @@ p{
         font-size:4.2rem;
     }
     #menu_index{
-        display: inherit;
+        display: inline;
     }
     #menu_index_chico{
         display: none;
@@ -54,7 +56,7 @@ p{
         font-size:3.4rem;
     }
     #menu_index_chico{
-        display: inherit;
+        display: inline;
     }
 }
 @media only screen and (max-width : 340px) {
@@ -68,7 +70,7 @@ p{
         font-size:2.4rem;
     }
     #menu_index_chico{
-        display: inherit;
+        display: inline;
     }
 }
 
