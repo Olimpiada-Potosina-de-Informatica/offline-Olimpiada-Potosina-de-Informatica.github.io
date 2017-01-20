@@ -10,12 +10,6 @@ p{
 .button-collapse {
   color: #26a69a;
 }
-#menu_index_chico{
-        display: none;
-}
-#menu_index{
-        display: inline;
-}
 .parallax-container {
   min-height: 380px;
   line-height: 0;
@@ -34,12 +28,6 @@ p{
     #titulo_opi{
         font-size:4.2rem;
     }
-    #menu_index{
-        display: inline;
-    }
-    #menu_index_chico{
-        display: none;
-    }
   #index-banner .section {
     top: 10%;
   }
@@ -49,28 +37,16 @@ p{
   #index-banner .section {
     top: 0;
   }
-    #menu_index{
-        display: none;
-    }
     #titulo_opi{
         font-size:3.4rem;
-    }
-    #menu_index_chico{
-        display: inline;
     }
 }
 @media only screen and (max-width : 340px) {
   #index-banner .section {
     top: 0;
   }
-    #menu_index{
-        display: none;
-    }
     #titulo_opi{
         font-size:2.4rem;
-    }
-    #menu_index_chico{
-        display: inline;
     }
 }
 
