@@ -7,56 +7,12 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="js/jquery-3.1.1.min.js"></script>
-        <script src="js/jquery.validate.min.js"></script>
-        <script src="js/additional-methods.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
-        <script>
-            $("#sender").click(function() {
-                alert( "Handler for .click() called." );
-            });
-            $("#registro").validate({
-                rules: {
-                    first_name: {
-                        required: true,
-                        minlength: 5
-                    },
-                    last_name: {
-                        required: true,
-                        minlength: 5
-                    },
-                    cemail: {
-                        required: true,
-                        email:true
-                    },
-                    password: {
-				        required: true,
-				        minlength: 5
-                    },
-                    cpassword: {
-                        required: true,
-				        minlength: 5,
-				        equalTo: "#password"
-                    }
-                },
-                messages: {
-                    first_name:{
-                        required: "Campo Requerido",
-                        minlength: "MENSAJE"
-                    }
-                },
-                errorPlacement: function(error, element) {
-                    if(element.attr("name") == "first_name") {
-                        error.appendTo( element.parent("div").next("div") );
-                    } else {
-                        error.insertAfter(element);
-                    }
-                }
-            });
-        </script>
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
     </head>
     <body>
         <nav class="black z-depth-3" role="navigation">
@@ -84,38 +40,82 @@
         <div class="container">
             <div class="row card-panel grey lighten-5 z-depth-1">
                 <h4 class="col s12 m12 l12 center light">Registrate en la Olimpiada Potosina de Informática</h4>
-                <form id="registro" name="registro" action novalidate="novalidate" method="get">
+                <form id="registro" name="registro" method="get">
                     <div class="input-field col s12 m12 l6">                        
-                        <label for="first_name">Nombre(s)</label>
-                        <input id="first_name" name="first_name" type="text">
-                        <div class="errorTxt1">z</div>
+                        <input id="xfirst_name" type="text">
+                        <label for="xfirst_name">Nombre(s)</label>
                     </div>                    
                     <div class="input-field col s12 m12 l6">
-                        <input id="last_name" type="text">
-                        <label for="last_name">Apellidos</label>
+                        <input id="xlast_name" type="text">
+                        <label for="xlast_name">Apellidos</label>
                     </div>                    
                     <div class="input-field col s12">
-                        <input id="cemail" type="email">
-                        <label for="cemail">Email</label>
+                        <input id="xemail" type="email">
+                        <label for="xemail">Email</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="password" type="password">
-                        <label for="password">Password</label>
+                        <input id="xpassword" type="password">
+                        <label for="xpassword">Password</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="cpassword" type="password">
-                        <label for="cpassword">Confirma Password</label>
+                        <input id="xxpassword" type="password">
+                        <label for="xxpassword">Confirma Password</label>
                     </div>
-                    <div class="col 12 g-recaptcha" data-sitekey="6LdKzxIUAAAAAGSTcUzPI5LXQjuTTc_v0TlPxDa9"></div>                    
+                    <div class="col 12 g-recaptcha" data-sitekey="6LdKzxIUAAAAAGSTcUzPI5LXQjuTTc_v0TlPxDa9"></div>
                 </form>
                 <div class="col s12 center">
-                    <button id="sender" class="btn">¡Enviar!</button>
+                    <button id="btnsender" class="btn">¡Enviar!</button>
                 </div>
                 <div class="col s12 center">
                     <p id="demo"></p>
                 </div>                
             </div>
         </div>
+        <script>
+            $("#registro").validate({
+                rules: {
+                    xfirst_name: {
+                        required: true,
+                        minlength: 3
+                    },
+                    xlast_name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    xemail: {
+                        required: true,
+                        email: true
+                    },
+                    xpassword: {
+                        required: true,
+                        minlength: 5
+                    },
+                    xxpassword: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#xpassword"
+                    }
+                },
+                messages: {
+                    xfirst_name:{
+                        required: "Enter a username",
+                        minlength: "Enter at least 5 characters"
+                    }
+                },
+                errorElement : 'div',
+                errorPlacement: function(error, element) {
+                    var placement = $(element).data('error');
+                    if (placement) {
+                        $(placement).append(error)
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+            $( "#btnsender" ).click(function() {
+                alert( "Handler for .click() called." );
+            });
+        </script>
         <footer class="page-footer teal">
             <div class="container">
                 <div class="row">
