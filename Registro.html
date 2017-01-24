@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
@@ -8,22 +8,23 @@
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
-        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
         <nav class="black z-depth-3" role="navigation">
             <div class="nav-wrapper container">
                 <a id="logo-container" href="https://olimpiada-potosina-de-informatica.github.io" class="brand-logo circle"><img class="circle z-depth-5" height="135" width="135" src="logo_opi.png"></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="teal-text" href="">Registro</a></li>
+                    <li><a class="teal-text" href="Registro">Registro</a></li>
                     <li><a class="teal-text" href="">Iniciar Sesión</a></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
-                    <li><a href="">Registro</a></li>
+                    <li><a href="Registro">Registro</a></li>
                     <li><a href="">Iniciar Sesión</a></li>
                 </ul>
                 <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -40,39 +41,40 @@
         <div class="container">
             <div class="row card-panel grey lighten-5 z-depth-1">
                 <h4 class="col s12 m12 l12 center light">Registrate en la Olimpiada Potosina de Informática</h4>
+                <div class="col s12 center">
+                    <h6 id="ErrorMSG"></h6>
+                </div>
                 <form id="registro" name="registro" method="get">
                     <div class="input-field col s12 m12 l6">                        
-                        <input id="xfirst_name" type="text">
+                        <input id="xfirst_name" type="text" name="xfirst_name">
                         <label for="xfirst_name">Nombre(s)</label>
                     </div>                    
                     <div class="input-field col s12 m12 l6">
-                        <input id="xlast_name" type="text">
+                        <input id="xlast_name" type="text" name="xlast_name">
                         <label for="xlast_name">Apellidos</label>
                     </div>                    
                     <div class="input-field col s12">
-                        <input id="xemail" type="email">
+                        <input id="xemail" type="email" name="xemail">
                         <label for="xemail">Email</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="xpassword" type="password">
+                        <input id="xpassword" type="password" name="xpassword">
                         <label for="xpassword">Password</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="xxpassword" type="password">
+                        <input id="xxpassword" type="password" name="xxpassword">
                         <label for="xxpassword">Confirma Password</label>
                     </div>
                     <div class="col 12 g-recaptcha" data-sitekey="6LdKzxIUAAAAAGSTcUzPI5LXQjuTTc_v0TlPxDa9"></div>
-                </form>
-                <div class="col s12 center">
-                    <button id="btnsender" class="btn">¡Enviar!</button>
-                </div>
-                <div class="col s12 center">
-                    <p id="demo"></p>
-                </div>                
+                    <div class="col s12 center">
+                        <button id="btnsender" class="btn" type="submit">¡Enviar!</button>
+                    </div>
+                </form>                
             </div>
         </div>
         <script>
             $("#registro").validate({
+                debug: true,
                 rules: {
                     xfirst_name: {
                         required: true,
@@ -98,8 +100,21 @@
                 },
                 messages: {
                     xfirst_name:{
-                        required: "Enter a username",
-                        minlength: "Enter at least 5 characters"
+                        required: "Campo Requerido",
+                        minlength: "Mínimo 3 Caracteres"
+                    },
+                    xlast_name:{
+                        required: "Campo Requerido",
+                        minlength: "Mínimo 5 Caracteres"
+                    },
+                    xemail: "Correo no Valido",
+                    xpassword:{
+                        required: "Campo Requerido",
+                        minlength: "Mínimo 5 Caracteres"
+                    },
+                    xxpassword:{
+                        required: "Campo Requerido",
+                        equalTo: "La Contraseña no coincide"
                     }
                 },
                 errorElement : 'div',
@@ -110,10 +125,22 @@
                     } else {
                         error.insertAfter(element);
                     }
+                },
+                invalidHandler: function(event, validator){
+                    var errors = validator.numberOfInvalids();
+                    if (errors) {
+                        $("#ErrorMSG").hide();
+                        $("#ErrorMSG").html("Hay Errores");
+                        $("#ErrorMSG").addClass("card-panel red lighten-2 z-depth-1 white-text");
+                        $("#ErrorMSG").show();
+                    }
+                },
+                submitHandler:function(form){
+                        $("#ErrorMSG").hide();
+                        Materialize.toast("Perfecto!",1000);
                 }
             });
             $( "#btnsender" ).click(function() {
-                alert( "Handler for .click() called." );
             });
         </script>
         <footer class="page-footer teal">
