@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <title>Olimpiada Potosina de Informática</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/additional-methods.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script>
+            $("#sender").click(function() {
+                alert( "Handler for .click() called." );
+            });
+            $("#registro").validate({
+                rules: {
+                    first_name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    last_name: {
+                        required: true,
+                        minlength: 5
+                    },
+                    cemail: {
+                        required: true,
+                        email:true
+                    },
+                    password: {
+				        required: true,
+				        minlength: 5
+                    },
+                    cpassword: {
+                        required: true,
+				        minlength: 5,
+				        equalTo: "#password"
+                    }
+                },
+                messages: {
+                    first_name:{
+                        required: "Campo Requerido",
+                        minlength: "MENSAJE"
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    if(element.attr("name") == "first_name") {
+                        error.appendTo( element.parent("div").next("div") );
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <nav class="black z-depth-3" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="https://olimpiada-potosina-de-informatica.github.io" class="brand-logo circle"><img class="circle z-depth-5" height="135" width="135" src="logo_opi.png"></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="teal-text" href="">Registro</a></li>
+                    <li><a class="teal-text" href="">Iniciar Sesión</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="">Registro</a></li>
+                    <li><a href="">Iniciar Sesión</a></li>
+                </ul>
+                <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+        <div class="section center">
+            <br><br><br>
+            <div class="row">
+                <div class="col s12 m12 l12 center teal z-depth-3 white-text">
+                    <h4>Registro</h4>
+                </div>
+            </div>                        
+        </div>
+        <div class="container">
+            <div class="row card-panel grey lighten-5 z-depth-1">
+                <h4 class="col s12 m12 l12 center light">Registrate en la Olimpiada Potosina de Informática</h4>
+                <form id="registro" name="registro" action novalidate="novalidate" method="get">
+                    <div class="input-field col s12 m12 l6">                        
+                        <label for="first_name">Nombre(s)</label>
+                        <input id="first_name" name="first_name" type="text">
+                        <div class="errorTxt1">z</div>
+                    </div>                    
+                    <div class="input-field col s12 m12 l6">
+                        <input id="last_name" type="text">
+                        <label for="last_name">Apellidos</label>
+                    </div>                    
+                    <div class="input-field col s12">
+                        <input id="cemail" type="email">
+                        <label for="cemail">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="cpassword" type="password">
+                        <label for="cpassword">Confirma Password</label>
+                    </div>
+                    <div class="col 12 g-recaptcha" data-sitekey="6LdKzxIUAAAAAGSTcUzPI5LXQjuTTc_v0TlPxDa9"></div>                    
+                </form>
+                <div class="col s12 center">
+                    <button id="sender" class="btn">¡Enviar!</button>
+                </div>
+                <div class="col s12 center">
+                    <p id="demo"></p>
+                </div>                
+            </div>
+        </div>
+        <footer class="page-footer teal">
+            <div class="container">
+                <div class="row">
+                    <div class="col l8 s12">
+                        <h5 class="white-text">Olimpiada Potosina de Informática</h5>
+                        <p class="grey-text text-lighten-4">La OPI (Olimpiada Potosina de Informática) es un evento organizado gracias a la colaboración de diferentes entidades educativas del estado de san Luis potosí, de prácticamente todos los niveles; Con el claro objetivo de formar a los jóvenes y niños en las artes de la programación y prepararlos para torneos, abiertos y justas que involucren esta disciplina.</p>
+                    </div>
+                    <div class="col l4 s12">
+                        <h5 class="white-text">Contacto</h5>
+                        <ul><li><a class="white-text" href="#!">Comité de la Olimpiada Potosina de Informática</a></li></ul>
+                    </div>
+                </div>                
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                </div>
+            </div>
+        </footer>        
+    </body>
+</html>
