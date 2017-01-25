@@ -12,7 +12,8 @@
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+        <script src="js/init_js.js"></script>
         <script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
@@ -65,7 +66,7 @@
                         <input id="xxpassword" type="password" name="xxpassword">
                         <label for="xxpassword">Confirma Password</label>
                     </div>
-                    <div class="col 12 g-recaptcha" data-sitekey="6LdKzxIUAAAAAGSTcUzPI5LXQjuTTc_v0TlPxDa9"></div>
+                    <div class="col s12 g-recaptcha" data-sitekey="6LdKzxIUAAAAAGSTcUzPI5LXQjuTTc_v0TlPxDa9"></div>
                     <div class="col s12 center">
                         <button id="btnsender" class="btn" type="submit">¡Enviar!</button>
                     </div>
@@ -73,7 +74,7 @@
             </div>
         </div>
         <script>
-            $("#registro").validate({
+            $( "#registro" ).validate({
                 debug: true,
                 rules: {
                     xfirst_name: {
@@ -136,11 +137,34 @@
                     }
                 },
                 submitHandler:function(form){
-                        $("#ErrorMSG").hide();
-                        Materialize.toast("Perfecto!",1000);
+                    $("#ErrorMSG").hide();
+                    firebase.auth().createUserWithEmailAndPassword($("#xemail").val(),$("#xpassword").val()).then(function(user){
+                        Materialize.toast("¡Perfecto!",4000);
+                        window.location.href = "https://olimpiada-potosina-de-informatica.github.io".delay(4000);
+                    }).catch(function(error) {
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        switch(errorCode){
+                            case 'auth/email-already-in-use':
+                                Materialize.toast("e-mail En Uso",4000);
+                                break;
+                            case: 'auth/invalid-email':
+                                Materialize.toast("e-mail Invalido",4000);
+                                break;
+                            case 'auth/operation-not-allowed':
+                                Materialize.toast("Operación Invalida",4000);
+                                break;
+                            case 'auth/weak-password':
+                                Materialize.toast("La Contraseña Débil",4000);
+                                break;
+                            default:
+                                Materialize.toast("Error De Comunicación",4000);
+                                break;
+                        }
+                    });
                 }
             });
-            $( "#btnsender" ).click(function() {
+            $( "#btnsender" ).click(function(){
             });
         </script>
         <footer class="page-footer teal">
