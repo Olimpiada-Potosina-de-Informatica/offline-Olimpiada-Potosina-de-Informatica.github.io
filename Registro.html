@@ -14,7 +14,6 @@
         <script src="js/init.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
         <script src="js/init_js.js"></script>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
     </head>
     <body>
         <nav class="black z-depth-3" role="navigation">
@@ -47,26 +46,25 @@
                 </div>
                 <form id="registro" name="registro" method="get">
                     <div class="input-field col s12 m12 l6">                        
-                        <input id="xfirst_name" type="text" name="xfirst_name">
+                        <input id="xfirst_name" type="text" name="xfirst_name" maxlength="30">
                         <label for="xfirst_name">Nombre(s)</label>
                     </div>                    
                     <div class="input-field col s12 m12 l6">
-                        <input id="xlast_name" type="text" name="xlast_name">
+                        <input id="xlast_name" type="text" name="xlast_name" maxlength="30">
                         <label for="xlast_name">Apellidos</label>
                     </div>                    
                     <div class="input-field col s12">
-                        <input id="xemail" type="email" name="xemail">
+                        <input id="xemail" type="email" name="xemail" maxlength="30">
                         <label for="xemail">Email</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="xpassword" type="password" name="xpassword">
+                        <input id="xpassword" type="password" name="xpassword" maxlength="30">
                         <label for="xpassword">Password</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="xxpassword" type="password" name="xxpassword">
+                        <input id="xxpassword" type="password" name="xxpassword" maxlength="30">
                         <label for="xxpassword">Confirma Password</label>
                     </div>
-                    <div class="col s12 g-recaptcha" data-sitekey="6LdKzxIUAAAAAGSTcUzPI5LXQjuTTc_v0TlPxDa9"></div>
                     <div class="col s12 center">
                         <button id="btnsender" class="btn" type="submit">¡Enviar!</button>
                     </div>
@@ -75,47 +73,61 @@
         </div>
         <script>
             $( "#registro" ).validate({
-                debug: true,
                 rules: {
                     xfirst_name: {
                         required: true,
-                        minlength: 3
+                        minlength: 3,
+                        maxlength: 25
                     },
                     xlast_name: {
                         required: true,
-                        minlength: 5
+                        minlength: 5,
+                        maxlength: 25
                     },
                     xemail: {
                         required: true,
-                        email: true
+                        email: true,
+                        minlength:5,
+                        maxlength: 25
                     },
                     xpassword: {
                         required: true,
-                        minlength: 5
+                        minlength: 5,
+                        maxlength: 15
                     },
                     xxpassword: {
                         required: true,
                         minlength: 5,
-                        equalTo: "#xpassword"
+                        equalTo: "#xpassword",
+                        maxlength: 15
                     }
                 },
                 messages: {
                     xfirst_name:{
                         required: "Campo Requerido",
-                        minlength: "Mínimo 3 Caracteres"
+                        minlength: "Mínimo 3 Caracteres",
+                        maxlength: "Máximo Superado"
                     },
                     xlast_name:{
                         required: "Campo Requerido",
-                        minlength: "Mínimo 5 Caracteres"
+                        minlength: "Mínimo 5 Caracteres",
+                        maxlength: "Máximo Superado"
                     },
-                    xemail: "Correo no Valido",
+                    xemail: {
+                        required: "Campo Requerido",
+                        email: "Correo no Valido",
+                        minlength: "Mínimo 5 Caracteres",
+                        maxlength: "Máximo Superado"
+                    },
                     xpassword:{
                         required: "Campo Requerido",
-                        minlength: "Mínimo 5 Caracteres"
+                        minlength: "Mínimo 5 Caracteres",
+                        maxlength: "Máximo Superado"
                     },
                     xxpassword:{
                         required: "Campo Requerido",
-                        equalTo: "La Contraseña no coincide"
+                        equalTo: "La Contraseña no coincide",
+                        maxlength: "Máximo Superado"
                     }
                 },
                 errorElement : 'div',
@@ -127,6 +139,7 @@
                         error.insertAfter(element);
                     }
                 },
+                success: "valid",
                 invalidHandler: function(event, validator){
                     var errors = validator.numberOfInvalids();
                     if (errors) {
@@ -136,35 +149,32 @@
                         $("#ErrorMSG").show();
                     }
                 },
-                submitHandler:function(form){
+                submitHandler: function(form){
                     $("#ErrorMSG").hide();
                     firebase.auth().createUserWithEmailAndPassword($("#xemail").val(),$("#xpassword").val()).then(function(user){
-                        Materialize.toast("¡Perfecto!",4000);
-                        window.location.href = "https://olimpiada-potosina-de-informatica.github.io".delay(4000);
+                        Materialize.toast("¡Perfecto!",2000);
+                        setTimeout(function () {
+                            window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+                        }, 2000);
                     }).catch(function(error) {
                         var errorCode = error.code;
                         var errorMessage = error.message;
                         switch(errorCode){
                             case 'auth/email-already-in-use':
-                                Materialize.toast("e-mail En Uso",4000);
+                                Materialize.toast("e-mail En Uso",3000);
                                 break;
-                            case: 'auth/invalid-email':
-                                Materialize.toast("e-mail Invalido",4000);
+                            case 'auth/invalid-email':
+                                Materialize.toast("e-mail Invalido",3000);
                                 break;
                             case 'auth/operation-not-allowed':
-                                Materialize.toast("Operación Invalida",4000);
+                                Materialize.toast("Operación Invalida",3000);
                                 break;
                             case 'auth/weak-password':
-                                Materialize.toast("La Contraseña Débil",4000);
-                                break;
-                            default:
-                                Materialize.toast("Error De Comunicación",4000);
+                                Materialize.toast("La Contraseña Débil",3000);
                                 break;
                         }
                     });
                 }
-            });
-            $( "#btnsender" ).click(function(){
             });
         </script>
         <footer class="page-footer teal">
