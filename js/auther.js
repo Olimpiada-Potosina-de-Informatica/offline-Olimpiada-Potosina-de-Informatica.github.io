@@ -6,8 +6,14 @@ $(document).ready( function () {
             $("#m_Reg").hide();
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user.emailVerified) {
-                    $("#d_Ses_auth").html("holi");
-                    $("#m_Ses_auth").html("holi");
+                    $("#d_Ses_auth_t").html(user.displayName);
+                    $("#m_Ses_auth_t").html(user.displayName);
+                    $("#d_Ses_auth_t").click(function(){
+                        document.location.href = "/Profile";
+                    });
+                    $("#m_Ses_auth_t").click(function(){
+                        document.location.href = "/Profile";
+                    });
                 } else {
                     Materialize.toast("Verifica tu email para tener acceso a los recursos",20000);
                     if(!(pathname=="/GrandesCorceles" || pathname=="/" || pathname=="/Registro")){
@@ -18,10 +24,15 @@ $(document).ready( function () {
         } else {
             $("#d_Reg").show();
             $("#m_Reg").show();
-            $("#d_Ses_auth").html("Iniciar Sesión");
-            $("#m_Ses_auth").html("Iniciar Sesión");
+            $("#d_Ses_auth_t").html("Iniciar Sesión");
+            $("#m_Ses_auth_t").html("Iniciar Sesión");
+            $("#d_Ses_auth_t").click(function(){
+                document.location.href = "/Login";
+            });
+            $("#m_Ses_auth_t").click(function(){
+                document.location.href = "/Login";
+            });
             var pathname = window.location.pathname;
-            Materialize.toast(pathname,4000);
             if(!(pathname=="/GrandesCorceles" || pathname=="/" || pathname=="/Registro")){
                 window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
             }
