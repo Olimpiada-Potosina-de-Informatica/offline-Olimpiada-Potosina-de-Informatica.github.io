@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $( "#update" ).validate({
-        debug:true,
         rules: {
             xfirst_name: {
                 required: true,
@@ -83,13 +82,13 @@ $(document).ready(function() {
         },
         submitHandler: function(form){
             $("#ErrorMSGu").hide();
+            $("#btnsender").hide();
             Materialize.toast("Actualizando...",1700);
             var userx = firebase.auth().currentUser;
             var s_user = userx.uid;
             var pslen = $("#xpassword").val();
             var updates ={};
             if(pslen){
-                $("#btnsender").hide();
                 userx.updatePassword($("#xpassword").val()).then(function() {
                         updates['/users/' + s_user+'/f_name'] = $("#xfirst_name").val();
                         updates['/users/' + s_user+'/l_name'] = $("#xlast_name").val();
@@ -118,9 +117,7 @@ $(document).ready(function() {
                 $("#xemail").val(data[0]);
                 $("#xemail").attr("disabled", true);
                 Materialize.updateTextFields();
-            });            
-        }else{
-            //if(user)window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+            });
         }
     });
     function updateperfil(updates) {
@@ -128,9 +125,10 @@ $(document).ready(function() {
             Materialize.toast("Listo!",5000);
             setTimeout(function () {
                 window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
-            }, 5000);              
+            }, 3000);              
         }, function(error){
             Materialize.toast("Error!",1700);
+            $("#btnsender").show();
         });
     }
 });

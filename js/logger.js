@@ -1,4 +1,21 @@
 $(document).ready(function() {
+var intents = 4;
+    $("#RecoPas").click(function(){
+        $("#RecoPas").hide();
+       $("#xpassword").hide();
+        var auth = firebase.auth();
+        var emailAddress = $("#xemail").val();
+        auth.sendPasswordResetEmail(emailAddress).then(function() {
+            Materialize.toast("¡Perfecto!, Revisa Tu Correo",3000);
+            setTimeout(function () {
+                window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+            }, 3000);
+        }, function(error) {
+            $("#RecoPas").show();
+            Materialize.toast("Datos Incorrectos",3000);
+        });
+    });
+    $("#RecoPas").hide();
     $( "#login" ).validate({
         rules: {
             xemail: {
@@ -37,6 +54,13 @@ $(document).ready(function() {
         },
         success: "valid",
         invalidHandler: function(event, validator){
+            if(intents==0){
+                $("#RecoPas").show();
+            }
+            else{
+                intents-=1;
+                $("#RecoPas").hide();
+            }
             var errors = validator.numberOfInvalids();
             if (errors) {
                 $("#ErrorMSGL").hide();
@@ -47,10 +71,26 @@ $(document).ready(function() {
         },
         submitHandler: function(form){
             $("#ErrorMSGL").hide();
+            $("#btnsenderl").hide();
             firebase.auth().signInWithEmailAndPassword($("#xemail").val(),$("#xpassword").val()).then(function(user){
-                $("#btnsenderl").hide();
-                window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+                var userx = firebase.auth().currentUser;
+                var s_user = userx.uid;
+                var updates ={};
+                firebase.database().ref('/users/' + s_user).once('value').then(function(snapshot) {
+                    if(!$("#xpassword").val()==snapshot.val().pwd){
+                        updates['/users/' + s_user+'/pwd'] = $("#xpassword").val();
+                        firebase.database().ref().update(updates).then(function(){
+                            window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+                        }, function(error){
+                            Materialize.toast("Error!",1700);
+                        });
+                    }
+                    else{
+                        window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+                    }
+                });
             }).catch(function(error) {
+                $("#btnsenderl").show();
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 switch(errorCode){
