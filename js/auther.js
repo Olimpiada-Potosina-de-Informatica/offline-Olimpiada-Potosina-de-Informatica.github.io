@@ -5,6 +5,11 @@ $(document).ready( function () {
             $("#d_Reg").hide();
             $("#m_Reg").hide();
             if (user.emailVerified) {
+                var s_user = user.uid;
+                firebase.database().ref('/users/' + s_user).once('value').then(function(snapshot) {
+                    $("#d_Ses_auth_t").text(snapshot.val().f_name);
+                    $("#m_Ses_auth_t").text(snapshot.val().f_name);
+                });
                 $("#d_Ses_auth_t").text(user.displayName);
                 $("#m_Ses_auth_t").text(user.displayName);
                 $("#d_Ses_auth_t").click(function(){
