@@ -14,14 +14,19 @@ $(document).ready(function() {
             },
             xpassword: {
                 required: false,
-                minlength: 5,
+                minlength: 6,
                 maxlength: 15
             },
             xxpassword: {
                 required: false,
-                minlength: 5,
+                minlength: 6,
                 maxlength: 15,
                 equalTo: "#xpassword"
+            },
+            currentpassword:{
+                required: false,
+                minlength: 6,
+                maxlength: 15
             }
         },
         messages: {
@@ -33,7 +38,18 @@ $(document).ready(function() {
             },
             xpassword:{
                 required: "Campo Requerido",
-                minlength: "Mínimo 5 Caracteres",
+                minlength: "Mínimo 6 Caracteres",
+                maxlength: "Máximo Superado"
+            },
+            xxpassword:{
+                required: "Campo Requerido",
+                minlength: "Mínimo 6 Caracteres",
+                equalTo: "La Contraseña no coincide",
+                maxlength: "Máximo Superado"
+            },
+            currentpassword:{
+                required: "Campo Requerido",
+                minlength: "Mínimo 6 Caracteres",
                 maxlength: "Máximo Superado"
             },
             xfirst_name:{
@@ -56,7 +72,6 @@ $(document).ready(function() {
                 error.insertAfter(element);
             }
         },
-        success: "valid",
         invalidHandler: function(event, validator){
             var errors = validator.numberOfInvalids();
             if (errors && $("#perfil_options").hasClass("active")) {
@@ -69,29 +84,30 @@ $(document).ready(function() {
         submitHandler: function(form){
             $("#ErrorMSGu").hide();
             Materialize.toast("Actualizando...",1700);
-            var user = firebase.auth().currentUser;
-            var s_user = user.uid;
+            var userx = firebase.auth().currentUser;
+            var s_user = userx.uid;
             var pslen = $("#xpassword").val();
             var updates ={};
             if(pslen){
-                user.updatePassword($("#xpassword").val()).then(function() {
-                    updates['/users/' + s_user+'/f_name'] = $("#xfirst_name").val();
-                    updates['/users/' + s_user+'/l_name'] = $("#xlast_name").val();
-                    updates['/users/' + s_user+'/pwd'] = $("#xpassword").val();
-                    updateperfil(updates,s_user);
-                },function(error) {
-                    Materialize.toast("Error!",1700);
-                });
+                $("#btnsender").hide();
+                userx.updatePassword($("#xpassword").val()).then(function() {
+                        updates['/users/' + s_user+'/f_name'] = $("#xfirst_name").val();
+                        updates['/users/' + s_user+'/l_name'] = $("#xlast_name").val();
+                        updates['/users/' + s_user+'/pwd'] = $("#xpassword").val();
+                        updateperfil(updates);
+                    },function(error) {
+                        Materialize.toast("Debes de haber iniciado sesión recientemente!",3000);
+                    });
             }else{
                 updates['/users/' + s_user+'/f_name'] = $("#xfirst_name").val();
                 updates['/users/' + s_user+'/l_name'] = $("#xlast_name").val();
-                updateperfil(updates,s_user);
+                updateperfil(updates);
             }
         }
     });
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            var s_user = user.uid;
+    firebase.auth().onAuthStateChanged(function(codeuser) {
+        if (codeuser) {
+            var s_user = codeuser.uid;
             var data=[];
             firebase.database().ref('/users/' + s_user).once('value').then(function(snapshot) {
                 data[0] = snapshot.val().email;
@@ -104,15 +120,15 @@ $(document).ready(function() {
                 Materialize.updateTextFields();
             });            
         }else{
-            window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+            //if(user)window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
         }
     });
-    function updateperfil(updates,usid) {        
-        return firebase.database().ref().update(updates).then(function(){
-            Materialize.toast("Listo!",1700);
+    function updateperfil(updates) {
+        firebase.database().ref().update(updates).then(function(){
+            Materialize.toast("Listo!",5000);
             setTimeout(function () {
                 window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
-            }, 4000);            
+            }, 5000);              
         }, function(error){
             Materialize.toast("Error!",1700);
         });

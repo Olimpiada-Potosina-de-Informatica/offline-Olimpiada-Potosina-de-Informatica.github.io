@@ -9,7 +9,7 @@ $(document).ready(function() {
             },
             xpassword: {
                 required: true,
-                minlength: 5,
+                minlength: 6,
                 maxlength: 15
             }
         },
@@ -22,7 +22,7 @@ $(document).ready(function() {
             },
             xpassword:{
                 required: "Campo Requerido",
-                minlength: "Mínimo 5 Caracteres",
+                minlength: "Mínimo 6 Caracteres",
                 maxlength: "Máximo Superado"
             }
         },
