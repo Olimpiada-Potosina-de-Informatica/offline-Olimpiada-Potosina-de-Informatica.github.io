@@ -8,11 +8,14 @@
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/additional-methods.min.js"></script>
         <script src="js/materialize.js"></script>
         <script src="js/init.js"></script>        
         <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
         <script src="js/init_js.js"></script>
         <script src="js/auther.js"></script>
+        <script src="js/profile_update.js"></script>
     </head>
     <body>
         <nav class="black z-depth-3" role="navigation">
@@ -31,14 +34,59 @@
                 <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
-        <div class="container">
-            <div class="section">
-                <div class="container">
-                    <br><br>
-                    <h1 id="titulo_opi" class="header center teal-text">Olimpiada Potosina de Informática</h1>
-                    <h5 class="header center">"Formando ponys desde tiempos inmemorables"</h5>
+        <div class="section">
+            <br><br><br>
+            <div class="row">                
+                <div class="col s12 m12 l12 center teal z-depth-3 white-text">
+                    <h4>Perfil de Usuario</h4>
                 </div>
             </div>
+        </div>
+        <div class="container">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>        
+                    <div id="perfil_options" class="collapsible-header">
+                        <i class="material-icons">perm_identity</i>Actualizar Perfil
+                    </div>
+                    <div class="collapsible-body container">
+                        <div class="col s12 center"><h6 id="ErrorMSGu"></h6></div>
+                        <form id="update" name="update" method="get">
+                            <div class="input-field col s12 m12 l6">
+                                <input id="xfirst_name" type="text" name="xfirst_name" maxlength="30">
+                                <label for="xfirst_name">Nombre(s)</label>
+                            </div>                    
+                            <div class="input-field col s12 m12 l6">
+                                <input id="xlast_name" type="text" name="xlast_name" maxlength="30">
+                                <label for="xlast_name">Apellidos</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="xemail" type="email" name="xemail" maxlength="30">
+                                <label for="xemail">Email</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="xpassword" type="password" name="xpassword" maxlength="30">
+                                <label for="xpassword">Password</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="xxpassword" type="password" name="xxpassword" maxlength="30">
+                                <label for="xxpassword">Confirma Password</label>
+                            </div>
+                            <div class="col s12 center">
+                                <button id="btnsender" class="btn" type="submit">¡Actualizar!</button>
+                            </div>
+                        </form>
+                        <div class="col s12 center"><h6 id="SuccesMSG"></h6></div>
+                    </div>
+                </li>
+                <li>
+      <div class="collapsible-header"><i class="material-icons">assignment</i>Datos de Olímpico</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+                <li>
+      <div class="collapsible-header active"><i class="material-icons">assessment</i>Desempeño</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+            </ul>
         </div>
         <footer class="page-footer teal">
             <div class="container">
@@ -53,6 +101,8 @@
                     </div>
                 </div>                
             </div>
+            <div class="container">
+        </div>
             <div class="footer-copyright">
                 <div class="container">
                 </div>
