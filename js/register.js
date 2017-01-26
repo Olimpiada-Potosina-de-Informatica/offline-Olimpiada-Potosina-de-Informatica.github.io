@@ -86,6 +86,9 @@ $(document).ready(function() {
                 $("#SuccesMSG").show();
                 Materialize.toast("¡Perfecto!, Revisa Tu Correo",4000);
                 user.sendEmailVerification();
+                user.updateProfile({
+                    displayName: $("#xfirst_name").val()+" "+$("#xlast_name").val()
+                }).then(function() {}, function(error) {});
                 setTimeout(function () {
                     window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
                 }, 8000);
