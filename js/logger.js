@@ -73,22 +73,7 @@ var intents = 4;
             $("#ErrorMSGL").hide();
             $("#btnsenderl").hide();
             firebase.auth().signInWithEmailAndPassword($("#xemail").val(),$("#xpassword").val()).then(function(user){
-                var userx = firebase.auth().currentUser;
-                var s_user = userx.uid;
-                var updates ={};
-                firebase.database().ref('/users/' + s_user).once('value').then(function(snapshot) {
-                    if(!$("#xpassword").val()==snapshot.val().pwd){
-                        updates['/users/' + s_user+'/pwd'] = $("#xpassword").val();
-                        firebase.database().ref().update(updates).then(function(){
-                            window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
-                        }, function(error){
-                            Materialize.toast("Error!",1700);
-                        });
-                    }
-                    else{
-                        window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
-                    }
-                });
+                window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
             }).catch(function(error) {
                 $("#btnsenderl").show();
                 var errorCode = error.code;

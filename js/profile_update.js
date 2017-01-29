@@ -92,7 +92,6 @@ $(document).ready(function() {
                 userx.updatePassword($("#xpassword").val()).then(function() {
                         updates['/users/' + s_user+'/f_name'] = $("#xfirst_name").val();
                         updates['/users/' + s_user+'/l_name'] = $("#xlast_name").val();
-                        updates['/users/' + s_user+'/pwd'] = $("#xpassword").val();
                         updateperfil(updates);
                     },function(error) {
                         Materialize.toast("Debes de haber iniciado sesión recientemente!",3000);

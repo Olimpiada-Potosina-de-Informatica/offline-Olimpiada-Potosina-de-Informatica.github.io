@@ -91,8 +91,8 @@ $(document).ready(function() {
                 firebase.database().ref('users/' + s_user).set({
                     f_name:$("#xfirst_name").val(),
                     l_name:$("#xlast_name").val(),
-                    pwd:$("#xpassword").val(),
-                    email:$("#xemail").val()
+                    email:$("#xemail").val(),
+                    user_t:"Desconocido"
                 });
                 setTimeout(function () {
                     window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
