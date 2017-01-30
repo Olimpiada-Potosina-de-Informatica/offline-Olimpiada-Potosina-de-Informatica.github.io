@@ -208,6 +208,7 @@ $(document).ready(function() {
     }
     $("#p_sender").click(function(){
         if($("#x_solicitud").val()){
+            var s_user = firebase.auth().currentUser;
             var updates ={};
             updates['/solicitud/' + s_user+'/'+$("#x_solicitud").val()+"/"] = false;
             firebase.database().ref().update(updates).then(function(){
