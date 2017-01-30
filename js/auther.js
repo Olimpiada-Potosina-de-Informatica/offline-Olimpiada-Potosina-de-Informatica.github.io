@@ -36,7 +36,6 @@ $(document).ready( function () {
             }
             else {
                 Materialize.toast("Verifica tu email para tener acceso a los recursos",20000);
-                firebase.auth().signOut();
                 if(!(pathname=="/GrandesCorceles" || pathname=="/" || pathname=="/Registro" || pathname=="/Login")){
                     window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
                 }
