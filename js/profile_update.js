@@ -114,6 +114,13 @@ $(document).ready(function() {
                 $("#xemail").attr("disabled", true);
                 $("#p_user_name").html(snapshot.val().f_name+ " " + snapshot.val().l_name);
                 $("#p_correo").html(snapshot.val().email);
+                if(snapshot.hasChild("u_aprovat")){
+                    if(snapshot.child("u_aprovat").val()){
+                        $("#p_sender").prop('disabled', false);
+                    }else{
+                        $("#p_sender").prop('disabled', true);
+                    }
+                }
                 if(snapshot.hasChild("user_t")){
                     $("#p_usert").html(snapshot.val().user_t);
                 }//tipo de usuario
@@ -191,7 +198,7 @@ $(document).ready(function() {
         firebase.database().ref().update(updates).then(function(){
             Materialize.toast("Listo!",5000);
             setTimeout(function () {
-                //window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
+                window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
             }, 3000);              
         }, function(error){
             Materialize.toast("Error!",1700);
@@ -199,6 +206,22 @@ $(document).ready(function() {
             $("#x_btnsender").show();
         });
     }
+    $("#p_sender").click(function(){
+        if($("#x_solicitud").val()){
+            var updates ={};
+            updates['/solicitud/' + s_user+'/'+$("#x_solicitud").val()+"/"] = false;
+            firebase.database().ref().update(updates).then(function(){
+                Materialize.toast("Listo! se registro tu solicitud al evento",5000);
+                setTimeout(function () {
+                    window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
+                }, 3000);
+            }, function(error){
+                Materialize.toast("Error!,Prueba más tarde!",1700);
+                $("#btnsender").show();
+                $("#x_btnsender").show();
+            });
+        }
+    });
     $("#x_solicitud").css({
         display: 'inline',
         position: 'absolute',
@@ -264,7 +287,6 @@ $(document).ready(function() {
         }
     });
     $("#competidor").validate({
-        debug: true,
         rules: {
             x_tipousuario: {
                 required: true
@@ -350,7 +372,7 @@ $(document).ready(function() {
             var errors = validator.numberOfInvalids();
             if (errors) {
                 $("#Error_info").hide();
-                $("#Error_info").html(errors+"Hay Errores");
+                $("#Error_info").html("Hay Errores");
                 $("#Error_info").addClass("card-panel red lighten-2 z-depth-1 white-text");
                 $("#Error_info").show();
             }
