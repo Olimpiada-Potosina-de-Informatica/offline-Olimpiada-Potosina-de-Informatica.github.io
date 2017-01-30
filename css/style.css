@@ -93,3 +93,14 @@ footer.page-footer {
     font-size: 0.8rem;
     color:#FF4081;
 }
+.choiser input{
+    top: .5rem;
+    color: #26a69a;
+}
+.choiser label{
+    top: -.5rem;
+}
+.padder{
+    display: inline-block;
+    padding-bottom: 3rem;
+}

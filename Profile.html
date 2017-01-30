@@ -14,7 +14,6 @@
         <script src="js/init.js"></script>        
         <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
         <script src="js/init_js.js"></script>
-        <script src="js/auther.js"></script>
         <script src="js/profile_update.js"></script>
     </head>
     <body>
@@ -44,9 +43,137 @@
         </div>
         <div class="container">
             <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header active"><i class="material-icons">assignment</i>Datos de Usuario</div>
+                    <div class="collapsible-body container">
+                        <div class="row">
+                            <div class="choiser input-field col s12 m8 l8">
+                                <select id="x_solicitud">
+                                    <option value="" disabled selected>Lista de eventos disponibles</option>
+                                </select>
+                                <label>Selecciona algún evento</label>
+                            </div>
+                            <div class="col s12 m4 l4 center"><br><a class="btn disabled">Postular</a></div>
+                        </div>
+                        <div class="row">
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Usuario</div>
+                            <div id="p_usert" class="col s8"><h6></h6></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Nombre</div>
+                            <div id="p_user_name" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Correo</div>
+                            <div id="p_correo" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Grado Escolar</div>
+                            <div id="p_grade_t" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Escuela</div>
+                            <div id="p_school" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Clave</div>
+                            <div id="p_clave" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Matrícula</div>
+                            <div id="p_matr"class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Año o Semestre</div>
+                            <div id="p_grade" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Licenciatura</div>
+                            <div id="p_lic" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Teléfono</div>
+                            <div id="p_tel" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                            <div class="col s4">Fecha de Nacimiento</div>
+                            <div id="p_nat" class="col s8"></div>
+                            <div class="divider col s12 z-depth-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                AGREGAR AQUI LA LISTA DE SOLICITUDES
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">assessment</i>Desempeño</div>
+                    <div class="collapsible-body"><span>Aun no tienes ningún desempeño ¡Éxito!</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">perm_identity</i>Actualizar Perfil de Competidor</div>
+                    <div class="collapsible-body container">
+                        <div class="col s12 center"><h6 id="Error_info"></h6></div>
+                        <form class="row" id="competidor" name="competidor" method="get">
+                            <label class="col s12"for="group2">Selecciona tu grado escolar</label>
+                            <div class="input-field col s12 m12 l12 padder">
+                                <input name="group2" type="radio" id="pick3" value="Primaria"/>
+                                <label for="pick3">Primaria</label>
+                                <input name="group2" type="radio" id="pick4" value="Secundaria"/>
+                                <label for="pick4">Secundaria</label>
+                                <input name="group2" type="radio" id="pick5" value="Bachillerato"/>
+                                <label for="pick5">Bachillerato</label>
+                                <input name="group2" type="radio" id="pick6" value="Licenciatura" checked/>
+                                <label for="pick6">Licenciatura</label>
+                            </div>
+                            <div class="choiser input-field col s12 m12 l12">
+                                <select id="x_tipousuario" name="x_tipousuario">
+                                    <option value="0" disabled selected>Tipos de Usuario</option>
+                                    <option value="Competidor">Competidor</option>
+                                    <option value="Profesor">Profesor</option>
+                                </select>
+                                <label for="x_tipousuario">Tipo de Usuario</label>
+                            </div>
+                            <div class="choiser input-field col s12 m12 l12">
+                                <select id="x_escuela" name="x_escuela">
+                                    <option value="" disabled selected>Selecciona Tu Escuela De Procedencia</option>
+                                </select>
+                                <label for="x_escuela">Institución</label>
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <label class="active" for="x_clave">Clave</label>
+                                <input id="x_clave" type="text" name="x_clave" maxlength="30" disabled>
+                            </div>
+                            <div class="input-field col s12 m6 l6">
+                                <input id="x_matricula" type="text" name="x_matricula" maxlength="30">
+                                <label for="x_matricula">Matrícula</label>
+                            </div>    
+                            <div class="choiser input-field col s12 m6 l12">
+                                <select id="x_lic" name="x_lic">
+                                    <option value="0" disabled selected>Licenciatura</option>
+                                </select>
+                                <label for="x_lic">Licenciatura</label>
+                            </div>
+                            <div class="input-field col s6 m3 l6">
+                                <input id="x_num_cur" type="number" name="x_num_cur" min="1" max="14">
+                                <label for="x_num_cur">Año o Semestre</label>
+                            </div>
+                            <div class="input-field col s6 m3 l6">
+                                <input name="group1" type="radio" id="pick1" value="Año" />
+                                <label for="pick1">Año</label>
+                                <input name="group1" type="radio" id="pick2" value="Semestre"checked/>
+                                <label for="pick2">Semestre</label>
+                            </div>
+                            <div class="input-field col s12 m6 l12">
+                                <input id="x_tel" name="x_tel" maxlength="10" required>
+                                <label class="active" for="x_tel">Teléfono</label>
+                            </div>
+                            <div class="input-field col s12 m6 l12">
+                                <input id="x_nat" name="x_nat" type="date" class="datepicker" required>
+                                <label clas="active" for="x_nat">Fecha de Nacimiento</label>
+                            </div>
+                            <div class="col s12 m12 l12 center">
+                                <button id="x_btnsender" class="btn" type="submit">¡Actualizar!</button>
+                            </div>
+                        </form>
+                        <div class="col s12 center"><h6 id="x_Succesmsg"></h6></div>
+                    </div>
+                </li>
                 <li>        
                     <div id="perfil_options" class="collapsible-header">
-                        <i class="material-icons">perm_identity</i>Actualizar Perfil
+                        <i class="material-icons">settings_applications</i>Actualizar Perfil de Usuario
                     </div>
                     <div class="collapsible-body container">
                         <div class="col s12 center"><h6 id="ErrorMSGu"></h6></div>
@@ -78,14 +205,6 @@
                         <div class="col s12 center"><h6 id="SuccesMSG"></h6></div>
                     </div>
                 </li>
-                <li>
-      <div class="collapsible-header"><i class="material-icons">assignment</i>Datos de Olímpico</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-                <li>
-      <div class="collapsible-header active"><i class="material-icons">assessment</i>Desempeño</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
             </ul>
         </div>
         <footer class="page-footer teal">
