@@ -208,9 +208,11 @@ $(document).ready(function() {
     }
     $("#p_sender").click(function(){
         if($("#x_solicitud").val()){
-            var s_user = firebase.auth().currentUser;
+            var x_user = firebase.auth().currentUser;
+            var s_user =x_user.uid;
             var updates ={};
-            updates['/solicitud/' + s_user+'/'+$("#x_solicitud").val()+"/"] = false;
+            var val_event=$("#x_solicitud").val();
+            updates['/solicitud/' + s_user+'/'+val_event+"/"] = false;
             firebase.database().ref().update(updates).then(function(){
                 Materialize.toast("Listo! se registro tu solicitud al evento",5000);
                 setTimeout(function () {
