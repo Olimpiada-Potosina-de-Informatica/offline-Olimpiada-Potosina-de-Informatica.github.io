@@ -1,9 +1,23 @@
 $(document).ready( function () {
-    firebase.auth().onAuthStateChanged( function(user) {
+    firebase.auth().onAuthStateChanged( function(user){
+        $("#d_Reg").hide();
+        $("#m_Reg").hide();
+        $("#d_Ses_auth_t").hide();
+        $("#m_Ses_auth_t").hide();
+        $("#d_Ses_out").hide();
+        $("#m_Ses_out").hide();     
+        $("#d_robotik").click(function(){
+            document.location.href = "/Robotik";
+        });
+        $("#m_robotik").click(function(){
+            document.location.href = "/Robotik";
+        });
         if (user) {
+            $("#d_Ses_auth_t").show();
+        $("#m_Ses_auth_t").show();
+        $("#d_Ses_out").show();
+        $("#m_Ses_out").show();
             var pathname = window.location.pathname;
-            $("#d_Reg").hide();
-            $("#m_Reg").hide();
             if (user.emailVerified) {
                 if(pathname=="/Registro" || pathname=="/Login"){
                     window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
@@ -44,8 +58,8 @@ $(document).ready( function () {
         else {
             $("#d_Reg").show();
             $("#m_Reg").show();
-            $("#m_Ses_out").hide();
-            $("#d_Ses_out").hide();
+            $("#d_Ses_auth_t").show();
+            $("#m_Ses_auth_t").show();
             $("#d_Ses_auth_t").text("Iniciar Sesión");
             $("#m_Ses_auth_t").text("Iniciar Sesión");
             $("#d_Ses_auth_t").click(function(){

@@ -1,4 +1,32 @@
 $(document).ready(function() {
+    function fun1 ( param ) {
+        switch ( param ){
+            case 1:
+                return 'En Espera';
+            case 2:
+                return 'Papelería Aprobada';
+            case 3:
+                return 'Solicitud Aprobada';
+            case 4:
+                return 'Solicitud Rechazada';
+            case 5:
+                return 'Papelería Rechazada';
+        }
+    };
+    function fun2 ( param ) {
+        switch ( param ){
+            case 1:
+                return 'list';
+            case 2:
+                return 'description';
+            case 3:
+                return 'done';
+            case 4:
+                return 'trending_down';
+            case 5:
+                return 'tab_unselected';
+        }
+    };
     $( "#update" ).validate({
         rules: {
             xfirst_name: {
@@ -120,6 +148,9 @@ $(document).ready(function() {
                     }else{
                         $("#p_sender").prop('disabled', true);
                     }
+                }else{
+                    $("#p_sender").prop('disabled', true);
+                    Materialize.toast("Rellena todos los datos y espera en lo que el admin te autoriza",2700);
                 }
                 if(snapshot.hasChild("user_t")){
                     $("#p_usert").html(snapshot.val().user_t);
@@ -153,6 +184,20 @@ $(document).ready(function() {
                 }
                 Materialize.updateTextFields();
             });            
+            firebase.database().ref('/solicitud/' + s_user).once('value').then(function(snapshot){
+                snapshot.forEach(function(childSnapshot) {
+                    var key = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    if(childData)$("#Soli_send").append('<div class="card-panel grey lighten-5 z-depth-1 row"><div class="col s6 m7 l7">'+key+'</div><div class="col s4 m4 l4">En Espera</div><div class="col s1 m1 l1"><i class="material-icons">list</i></div></div>');
+                });
+            });
+            firebase.database().ref('/solicitud_aproved/' + s_user).once('value').then(function(snapshot){
+                snapshot.forEach(function(childSnapshot) {
+                    var key = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    if(childData)$("#Soli_send").append('<div class="card-panel grey lighten-5 z-depth-1 row"><div class="col s6 m7 l7">'+key+'</div><div class="col s4 m4 l4">'+fun1(childData)+'</div><div class="col s1 m1 l1"><i class="material-icons">'+fun2(childData)+'</i></div></div>');
+                });
+            });
             var query = firebase.database().ref("/form/event/").orderByKey();
             query.once("value").then(function(snapshot) {
                 snapshot.forEach(function(childSnapshot) {
