@@ -18,9 +18,10 @@
         <script src="js/profile_update.js"></script>
     </head>
     <body>
+        <div id="preloader"><div></div></div>
         <nav class="black z-depth-3" role="navigation">
             <div class="nav-wrapper container">
-                <a id="logo-container" href="https://olimpiada-potosina-de-informatica.github.io" class="brand-logo circle"><img class="circle z-depth-5" height="135" width="135" src="logo_opi.png"></a>
+                <a id="logo-container" href="https://olimpiada-potosina-de-informatica.github.io" class="brand-logo circle"><img class="circle z-depth-5" height="135" width="135" src="imgs/logo_opi.png"></a>
                 <ul class="right hide-on-med-and-down">
                     <li id="d_robotik"><a class="white-text red">Club de Robótica ITSLP</a></li>
                     <li id="d_Reg"><a class="white-text" href="Registro">Registro</a></li>
@@ -47,7 +48,7 @@
         <div class="container">
             <ul class="collapsible" data-collapsible="accordion">
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">assignment</i>Datos de Usuario</div>
+                    <div class="collapsible-header active"><i class="material-icons">assignment</i>Datos de Usuario</div>
                     <div class="collapsible-body container">
                         <div class="row">
                             <div class="choiser input-field col s12 m8 l8">
@@ -56,8 +57,8 @@
                                 </select>
                                 <label>Selecciona algún evento</label>
                             </div>
-                            <div class="col s12 m4 l4"><br><button id="p_sender" class="btn">Postular</button></div>
-                            <div class="choiser input-field col s12">
+                            <div class="col s12 m4 l4 input-field"><br><button id="p_sender" class="btn">Postular</button></div>
+                            <div class="col s12">
                                 <h6 id="p_sender_msg"></h6>
                             </div>
                         </div>

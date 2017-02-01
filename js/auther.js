@@ -75,3 +75,7 @@ $(document).ready( function () {
         }
     });
 });
+$(window).load(function(){
+    $("#preloader div").delay(800).fadeOut();
+    $("#preloader").delay(800).fadeOut("slow");
+});

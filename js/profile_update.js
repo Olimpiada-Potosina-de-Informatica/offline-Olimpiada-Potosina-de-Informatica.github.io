@@ -142,19 +142,20 @@ $(document).ready(function() {
                 $("#xemail").attr("disabled", true);
                 $("#p_user_name").html(snapshot.val().f_name+ " " + snapshot.val().l_name);
                 $("#p_correo").html(snapshot.val().email);
+                if(snapshot.hasChild("user_t")){
+                    $("#p_usert").html(snapshot.val().user_t);
+                }else{
+                    $("#p_sender").prop('disabled', true);
+                    Materialize.toast("Completa todos los datos del registro",2700);
+                }
                 if(snapshot.hasChild("u_aprovat")){
                     if(snapshot.child("u_aprovat").val()){
                         $("#p_sender").prop('disabled', false);
                     }else{
                         $("#p_sender").prop('disabled', true);
+                        Materialize.toast("Necesitas completar todos los campos de registro correctamente para solicitar algún evento",2700);
                     }
-                }else{
-                    $("#p_sender").prop('disabled', true);
-                    Materialize.toast("Rellena todos los datos y espera en lo que el admin te autoriza",2700);
                 }
-                if(snapshot.hasChild("user_t")){
-                    $("#p_usert").html(snapshot.val().user_t);
-                }//tipo de usuario
                 if(snapshot.hasChild("u_school")){
                     $("#p_school").html(snapshot.val().u_school);
                     var queryc = firebase.database().ref("/form/school/").orderByKey();
