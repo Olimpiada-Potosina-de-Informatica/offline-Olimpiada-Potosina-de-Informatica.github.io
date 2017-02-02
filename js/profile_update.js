@@ -186,12 +186,10 @@ $(document).ready(function() {
                 Materialize.updateTextFields();
             });            
             firebase.database().ref('/solicitud/' + s_user).once('value').then(function(snapshot){
-                Materialize.toast("aqui solicito info",2700);
                 snapshot.forEach(function(childSnapshot) {
                     var key = childSnapshot.key;
                     var childData = childSnapshot.val();
-                    Materialize.toast(key+" "+childData,2700);
-                        $("#Soli_send").append('<div class="card-panel grey lighten-5 z-depth-1 row"><div class="col s6 m7 l7">'+key+'</div><div class="col s4 m4 l4">En Espera</div><div class="col s1 m1 l1"><i class="material-icons">list</i></div></div>');
+                    $("#Soli_send").append('<div class="card-panel grey lighten-5 z-depth-1 row"><div class="col s6 m7 l7">'+key+'</div><div class="col s4 m4 l4">En Espera</div><div class="col s1 m1 l1"><i class="material-icons">list</i></div></div>');
                 });
             });
             firebase.database().ref('/solicitud_aproved/' + s_user).once('value').then(function(snapshot){
@@ -261,18 +259,24 @@ $(document).ready(function() {
             var updates ={};
             var val_event=$("#x_solicitud").val();
             var ref = firebase.database().ref('/solicitud/' + s_user+'/');
-            ref.once("value")
-                .then(function(snapshot) {
+            ref.once("value").then(function(snapshot) {
                 var hasevent = snapshot.hasChild(val_event);
                 if(hasevent){
                     Materialize.toast("Ya te registraste al evento!",1700);
                 }else{
-                    updates['/solicitud/' + s_user+'/'+val_event+"/"] = false;
-                    firebase.database().ref().update(updates).then(function(){
-                        Materialize.toast("Listo! se registro tu solicitud al evento",5000);
-                        setTimeout(function () {
-                            window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
-                        }, 3000);
+                    var ref2 = firebase.database().ref('/solicitud/' + s_user+'/');
+                    ref2.once("value").then(function(snapshot) {
+                        var hasevent2 = snapshot.hasChild(val_event);
+                        if(hasevent2){
+                            Materialize.toast("Ya te registraste al evento!",1700);
+                        }else{
+                            updates['/solicitud/' + s_user+'/'+val_event+"/"] = false;
+                            firebase.database().ref().update(updates).then(function(){
+                            Materialize.toast("Listo! se registro tu solicitud al evento",5000);
+                            setTimeout(function () {
+                                window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
+                            }, 3000);
+                        }
                     }, function(error){
                         Materialize.toast("Error!,Prueba más tarde!",1700);
                         $("#btnsender").show();
