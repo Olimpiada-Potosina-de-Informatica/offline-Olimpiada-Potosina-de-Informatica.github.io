@@ -290,8 +290,6 @@ $(document).ready(function() {
                     });
                 }
             });
-        }
-    });
     $("#x_solicitud").css({
         display: 'inline',
         position: 'absolute',
