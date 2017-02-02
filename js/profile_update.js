@@ -272,12 +272,18 @@ $(document).ready(function() {
                         }else{
                             updates['/solicitud/' + s_user+'/'+val_event+"/"] = false;
                             firebase.database().ref().update(updates).then(function(){
-                            Materialize.toast("Listo! se registro tu solicitud al evento",5000);
-                            setTimeout(function () {
-                                window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
-                            }, 3000);
+                                Materialize.toast("Listo! se registro tu solicitud al evento",5000);
+                                setTimeout(function () {
+                                    window.location.href = "https://olimpiada-potosina-de-informatica.github.io/Profile";
+                                }, 3000);
+                            });
                         }
-                    }, function(error){
+                        }, function(error){
+                            Materialize.toast("Error!,Prueba más tarde!",1700);
+                            $("#btnsender").show();
+                            $("#x_btnsender").show();
+                        });
+                    }}, function(error){
                         Materialize.toast("Error!,Prueba más tarde!",1700);
                         $("#btnsender").show();
                         $("#x_btnsender").show();
