@@ -278,18 +278,19 @@ $(document).ready(function() {
                                 }, 3000);
                             });
                         }
-                        }, function(error){
-                            Materialize.toast("Error!,Prueba más tarde!",1700);
-                            $("#btnsender").show();
-                            $("#x_btnsender").show();
-                        });
-                    }}, function(error){
+                    }, function(error){
                         Materialize.toast("Error!,Prueba más tarde!",1700);
                         $("#btnsender").show();
                         $("#x_btnsender").show();
                     });
                 }
+            }, function(error){
+                Materialize.toast("Error!,Prueba más tarde!",1700);
+                $("#btnsender").show();
+                $("#x_btnsender").show();
             });
+        }
+    });
     $("#x_solicitud").css({
         display: 'inline',
         position: 'absolute',

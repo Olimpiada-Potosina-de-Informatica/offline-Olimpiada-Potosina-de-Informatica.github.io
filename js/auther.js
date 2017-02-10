@@ -70,7 +70,7 @@ $(document).ready( function () {
             });
             var pathname = window.location.pathname;
             if(!(pathname=="/GrandesCorceles" || pathname=="/" || pathname=="/Registro" || pathname=="/Login")){
-                window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
+                //window.location.href = "https://olimpiada-potosina-de-informatica.github.io";
             }
         }
     });
