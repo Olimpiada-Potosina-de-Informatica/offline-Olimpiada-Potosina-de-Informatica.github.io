@@ -22,7 +22,7 @@ var intents = 4;
                 required: true,
                 email: true,
                 minlength:5,
-                maxlength: 35
+                maxlength: 40
             },
             xpassword: {
                 required: true,
