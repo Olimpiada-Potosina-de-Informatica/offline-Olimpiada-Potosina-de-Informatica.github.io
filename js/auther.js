@@ -1,21 +1,5 @@
 $(document).ready( function () {
     firebase.auth().onAuthStateChanged( function(user){
-        $.get("/menu_navigation_opi.html", function(data){
-            $("#menu_navigation").html(data);
-            $('.button-collapse').sideNav();
-        });
-        $.get("/footer_opi.html", function(data){
-            $("#footer_div").html(data);
-            $('.button-collapse').sideNav();
-        });
-        $.get("/menu_robotik.html", function(data){
-            $("#menu_navigation_rbtk").html(data);
-            $('.button-collapse').sideNav();
-        });
-        $.get("/footer_robotik.html", function(data){
-            $("#footer_div_rbtk").html(data);
-            $('.button-collapse').sideNav();
-        });
         $("#d_Reg").hide();
         $("#m_Reg").hide();
         $("#d_Ses_auth_t").hide();
@@ -24,9 +8,9 @@ $(document).ready( function () {
         $("#m_Ses_out").hide();
         if (user) {
             $("#d_Ses_auth_t").show();
-        $("#m_Ses_auth_t").show();
-        $("#d_Ses_out").show();
-        $("#m_Ses_out").show();
+            $("#m_Ses_auth_t").show();
+            $("#d_Ses_out").show();
+            $("#m_Ses_out").show();
             var pathname = window.location.pathname;
             if (user.emailVerified) {
                 if(pathname=="/Registro" || pathname=="/Login"){
