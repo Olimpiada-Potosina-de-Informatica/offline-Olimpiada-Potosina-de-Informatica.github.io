@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <title>Olimpiada Potosina de Informática</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script src="/js/jquery-1.11.1.min.js"></script>
+        <script src="/js/materialize.js"></script>
+        <script src="/js/init.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script src="/js/init_js.js"></script>
+        <script src="/js/auther.js"></script>
+        <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+    </head>
+    <body>
+        <div id="preloader"><div></div></div>
+        <div id="menu_navigation"></div>
+        <div class="section">
+            <br><br><br>
+            <div class="row">                
+                <div class="col s12 center teal z-depth-3 white-text"><h4>Entrenamiento</h4></div>
+                <div class="col s12 center"><br><h5>Bloque I - Introducción Matemática</h5></div>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="center">Conjuntos Númericos</h3>
+            <div id="definiciones">
+                <p class="card-panel grey lighten-5 z-depth-1">Conjunto<br><i>Se refiere a una colección de elementos cualesquiera que comparten características o no, puede ser definido arbitrariamente o por una serie de "Reglas"</i></p>
+                <p class="card-panel grey lighten-5 z-depth-1">Número<br><i>Se refiere a un elemento abstracto, que podríamos llamar básico en los Sistemas de Numeración que utilizamos cotidianamente, pretenden representar una magnitud.</i></p>
+                <p class="card-panel grey lighten-5 z-depth-1">Sistema de Numeración<br><i>Un sistema de Numeración es un conjunto de reglas y símbolos, con el cual se pretende construir números válidos con ese mismo conjunto de reglas. Destaca de entre ellas la base en la cual se trabaja</i></p>
+                <p class="card-panel grey lighten-5 z-depth-1">Sistema Númerico<br><i>Un sistema numérico es un conjunto provisto de dos operaciones que verifican ciertas condiciones relacionadas con las propiedades conmutativa, asociativa y distributiva, dentro de uno o varios Sistemas de Numeración.</i></p>
+            </div>
+            <div id="introduccion">
+                <p>En esta subtema hablaremos sobre los números y como se organizan, para empezar vamos a comprender nuestras definiciones. Una vez comprendidas, vamos a ver si lo comprendimos correctamente; hablemos de un conjunto de números que es muy probable que identifiques, pues vamos a utilizar números arábigos o decimales, puesto que usamos 10 símbolos para representar una infinidad de números, cabe destacar que este es un Sistema de Numeración Decimal, este es el que usamos de cotidiano, y podemos atribuirle diversas propiedades.</p><p>Las propiedades más evidentes, es que es un sistema de numeración base 10 y sus símbolos con los que trabajamos son los siguientes: N={0,1,2,3,4,5,6,7,8,9}, podemos darnos cuenta que trabajamos con un sistema de numeración posicional, es decir, que si escribimos estos símbolos en diferente orden o posición nos representa un numero diferente, podrías entender un poco mejor esto si recuerdas los sistemas antiguos de numeración.</p><p>Pongámosle Reglas a nuestro Sistema de Numeración, como lo son las propiedades conmutativa, asociativa y distributiva, además de Operadores como lo son la Suma y Resta, y ahora tenemos nuestro Sistema Numérico Decimal, ¿Algo complejo verdad?, pues en realidad no lo es, por qué es lo que usas al salir a comprar a una tienda de autoservicio, o al recibir tus calificaciones de la escuela, solo que a todas las acciones que realizas le pusimos nombre y reglas, y esas reglas las conoces bien solo falta que las nombremos y las identifiques.</p>
+            </div>
+            <div id="cuerpo" class="row">
+                <div class="col s12 center black white-text"><h5>Conjuntos Númericos</h5></div>
+                <div class="col s12 card-panel">
+                    <p>Los conjuntos numéricos lo podemos ver como la forma en que organizamos nuestra percepción de los números sin importar que sistema de numeración utilicemos, pues podemos recurrir a diversos, estos los veremos en las siguientes lecciones, pero por el momento nos limitaremos al sistema de numeración decimal. ¡Empecemos!</p>
+                    <p>Recordemos la historia de los números, será interesante que te dieras cuenta como fue evolucionando el concepto del numero como lo conocemos hoy en día, así que te recomendamos que leas los libros sugeridos al final del documento, claro si quieres ahondar en el tema.</p>
+                    <p>En la época antigua surgió la necesidad de contar, podrías imaginarte el porqué, desde conocer cuántos soldados tiene el ejército enemigo, hasta saber cuántos huevos pusieron las gallinas, la necesidad de comunicar o percibir esta cantidad existía, los primeros en ser usados fueron los números naturales, estos expresaban números enteros positivos, posteriormente fueron apareciendo vestigios del uso de números fraccionarios y la creación del concepto del cero en diversas culturas, y poco a poco evoluciono hasta convertirse en un súper conjunto, de obvio, conjuntos de números con cualidades similares,y así se ve hoy en día de una forma básica.</p>
+                    <div class="card-panel">
+                        <img class="responsive-img" src="https://upload.wikimedia.org/wikipedia/commons/8/86/AL_Numeros_01.svg">
+                        De <a href="//commons.wikimedia.org/wiki/User:Dnu72" title="User:Dnu72">Dnu72</a> - <span class="int-own-work" lang="es">Trabajo propio</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=24884605">Enlace</a>
+                    </div>
+                    <p>A grandes rasgos los conjuntos que manejaremos son los Reales, y sus sub conjuntos como lo son los naturales y enteros de forma muy frecuente, así que definamos de la forma más simple estos 3 sub conjuntos.</p><p>Los números naturales son todos aquellos que podemos definir como en los ejemplos anteriores como 1 huevo, 2 huevos, 3 huevos, 4 huevos y así sucesivamente, sin utilizar fracciones ni negativos.</p><p>Los números enteros por su parte incluye el subconjunto de los naturales, además de que añade números con signo negativo, un ejemplo podría ser como cuando pedimos fiado (una práctica muy poco recomendable cabe recalcar), cuando esto ocurre expresa una falta de.</p><p>Los números Reales, practicante son todos los que manejas, fraccionarios o no, negativos o no, grandes o pequeños.</p><p>No olvides su representación pues la utilizaremos en ejercicios, problemas y ejemplos.</p>
+                </div>
+            </div>
+            <blockquote id="lecturas_recomendadas">
+                <p>Bibliografía sugerida para tu crecimiento, no olvides preguntar algo que no entiendas o discutirlo con tus compañeros.<br>
+                    •Primaria y •Secundaria<br>Aritmética Recreativa, Yakov Perelman, Capitulo Primero<br>•Preparatoria<br>
+                    PENDIENTE<br>
+                </p>
+            </blockquote>
+            <div class="card-panel grey darken-4 white-text">Que la excelencia los acompañe.<br><br>_> Jhonatan Barrón<br></div>
+        </div>
+        <div id="footer_div"></div>
+    </body>
+</html>

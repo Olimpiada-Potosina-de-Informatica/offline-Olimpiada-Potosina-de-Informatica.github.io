@@ -1,17 +1,27 @@
 $(document).ready( function () {
     firebase.auth().onAuthStateChanged( function(user){
+        $.get("/menu_navigation_opi.html", function(data){
+            $("#menu_navigation").html(data);
+            $('.button-collapse').sideNav();
+        });
+        $.get("/footer_opi.html", function(data){
+            $("#footer_div").html(data);
+            $('.button-collapse').sideNav();
+        });
+        $.get("/menu_robotik.html", function(data){
+            $("#menu_navigation_rbtk").html(data);
+            $('.button-collapse').sideNav();
+        });
+        $.get("/footer_robotik.html", function(data){
+            $("#footer_div_rbtk").html(data);
+            $('.button-collapse').sideNav();
+        });
         $("#d_Reg").hide();
         $("#m_Reg").hide();
         $("#d_Ses_auth_t").hide();
         $("#m_Ses_auth_t").hide();
         $("#d_Ses_out").hide();
-        $("#m_Ses_out").hide();     
-        $("#d_robotik").click(function(){
-            document.location.href = "/Robotik";
-        });
-        $("#m_robotik").click(function(){
-            document.location.href = "/Robotik";
-        });
+        $("#m_Ses_out").hide();
         if (user) {
             $("#d_Ses_auth_t").show();
         $("#m_Ses_auth_t").show();

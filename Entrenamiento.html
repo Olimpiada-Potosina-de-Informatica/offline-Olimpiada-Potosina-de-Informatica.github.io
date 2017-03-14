@@ -12,31 +12,11 @@
         <script src="js/init.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
         <script src="js/init_js.js"></script>
-        <script src="js/jquery.validate.min.js"></script>
-        <script src="js/additional-methods.min.js"></script>
-        <script src="js/logger.js"></script>
         <script src="js/auther.js"></script>
     </head>
     <body>
         <div id="preloader"><div></div></div>
-        <nav class="black z-depth-3" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="https://olimpiada-potosina-de-informatica.github.io" class="brand-logo circle"><img class="circle z-depth-5" height="135" width="135" src="imgs/logo_opi.png"></a>
-                <ul class="right hide-on-med-and-down">
-                    <li id="d_robotik"><a class="white-text red">Club de Robótica ITSLP</a></li>
-                    <li id="d_Reg"><a class="white-text" href="Registro">Registro</a></li>
-                    <li id="d_Ses_out"><a class="white-text">Cerrar sesión</a></li>
-                    <li><a id="d_Ses_auth_t" class="white-text"></a></li>
-                </ul>
-                <ul id="nav-mobile" class="side-nav">
-                    <li id="m_robotik"><a class="white-text red">Club de Robótica ITSLP</a></li>
-                    <li id="m_Reg"><a href="Registro">Registro</a></li>
-                    <li id="m_Ses_out"><a>Cerrar sesión</a></li>
-                    <li><a id="m_Ses_auth_t"></a></li>
-                </ul>
-                <a href="" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
+        <div id="menu_navigation"></div>
         <div class="section">
             <br><br><br>
             <div class="row">                
@@ -45,37 +25,64 @@
                 </div>
             </div>
         </div>
-        <div class="section">
-            <ul id="tabs-swipe" class="tabs">
-                <li class="tab col s3"><a class="active" href="#Consultas">Consultas</a></li>
-                <li class="tab col s3"><a class="active" href="#Administrar">Administrar</a></li>
-                <li class="tab col s3"><a href="#Problemas">Problemas</a></li>
-                <li class="tab col s3"><a href="#Agenda">Agenda</a></li>
-                <li class="tab col s3"><a href="#Solicitudes">Solicitudes</a></li>
+        <div class="container">
+            <div class="card-panel grey lighten-5 z-depth-1 center"><p>Bienvenido al Entrenamiento<br>
+                En esta sección probaremos tus destrezas y te guiaremos paso a paso en las competencias de la Olimpiada Potosina de Informática</p>
+            </div>
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">assessment</i>Primaria</div>
+                    <div class="collapsible-body container">
+                        <span>¡Estamos trabajando!</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">assessment</i>Secundaria</div>
+                    <div class="collapsible-body container">
+                        <span>¡Estamos trabajando!</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">assessment</i>Preparatoria</div>
+                    <div class="collapsible-body container">
+                        <ul id="tabs-swipe" class="tabs">
+                            <li class="tab col s3"><a class="active" href="#B1PRE">Bloque I</a></li>
+                            <li class="tab col s3"><a href="#Administrar">Bloque II</a></li>
+                            <li class="tab col s3"><a href="#Problemas">Bloque III</a></li>
+                            <li class="tab col s3"><a href="#Agenda">Bloque IV</a></li>
+                            <li class="tab col s3"><a href="#Solicitudes">Bloque V</a></li>
+                        </ul>
+                        <div id="B1PRE" class="row">
+                            <div class="col s12 teal white-text">Bloque I - Introducción Matemática</div>
+                            <div class="col s11 push-s1 teal white-text">Operaciones Básicas</div>
+                            <div class="col s10 push-s2"><a href="/Entrenamiento/BloqueI/ConjuntosN%C3%BAmericos">Conjuntos Númericos</a></div>
+                            <div class="col s10 push-s2"><a href="/Entrenamiento/Plantilla">Suma, Restas, Multiplicación, División y sus propiedades</a></div>
+                            <div class="col s10 push-s2"><a href="/Entrenamiento/Plantilla">Potenciación, Radicación, Módulo, Logaritmación y sus propiedades</a></div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s11 push-s1 teal white-text">Números primos y curiosidades</div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s11 push-s1 teal white-text">Sistemas binarios y principios de otros sistemas</div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s11 push-s1 teal white-text">Álgebra de Boole</div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s11 push-s1 teal white-text">Conteo</div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s11 push-s1 teal white-text">Temas varios y definiciones</div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s11 push-s1 teal white-text">Lorem ipsum</div>
+                            <div class="col s10 push-s2"></div>
+                            <div class="col s10 push-s2"></div>
+                        </div>
+                        <span>¡Estamos trabajando!</span>
+                    </div>
+                </li>
             </ul>
-            <div id="Consultas" class="col s12 blue"> Crear una tabla para generar consultas tablas de excel etc</div>
-            <div id="Administrar" class="col s12 red">Crear y dar privilegios a usuarios ademas de cambios de contraseña etc</div>
-            <div id="Problemas" class="col s12 green">añadir problemas y revisar el avanze de algun usuario, sugerir problemas y añadir tags</div>
-            <div id="Agenda" class="col s12 green">Agregar actividades para los pequeños ponys</div>
-            <div id="Solicitudes" class="col s12 green">Ver solicitudes manuales por seguridad para todos los usuarios</div>
         </div>
-        <footer class="page-footer teal">
-            <div class="container">
-                <div class="row">
-                    <div class="col l8 s12">
-                        <h5 class="white-text">Olimpiada Potosina de Informática</h5>
-                        <p class="grey-text text-lighten-4">La OPI (Olimpiada Potosina de Informática) es un evento organizado gracias a la colaboración de diferentes entidades educativas del estado de san Luis potosí, de prácticamente todos los niveles; Con el claro objetivo de formar a los jóvenes y niños en las artes de la programación y prepararlos para torneos, abiertos y justas que involucren esta disciplina.</p>
-                    </div>
-                    <div class="col l4 s12">
-                        <h5 class="white-text">Contacto</h5>
-                        <ul><li><a class="white-text" href="#!">Comité de la Olimpiada Potosina de Informática</a></li></ul>
-                    </div>
-                </div>                
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                </div>
-            </div>
-        </footer>
+        <div id="footer_div"></div>
     </body>
 </html>

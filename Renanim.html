@@ -56,14 +56,59 @@
             <div id="Consultas">
                 <div class="row container">
                     <div class="col s12">
-                        <div class="choiser input-field col s12 m8 l8">
-                            <select id="r_consulta">
-                                <option value="" disabled selected>Lista de eventos disponibles</option>
-                            </select>
-                            <label>Selecciona algún evento</label>
+                        <div class="choiser input-field col s12 m12 l12">
+                            <div class="input-field col s12 m6 l4">
+                                <input id="f_name" type="text" name="f_name">
+                                <label for="f_name">Nombre(s)</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="l_name" type="text" name="l_name">
+                                <label for="l_name">Apellidos</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="email" type="email" name="email">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s4 m6 l3">
+                                <input type="checkbox" id="u_aprovat"/>
+                                <label for="u_aprovat">Datos OK</label>
+                            </div>
+                            <div class="input-field col s2 m7 l3">
+                                <input id="u_grade" type=number name="u_grade">
+                                <label for="u_grade">Num Año/Sem</label>
+                            </div>
+                            <div class="input-field col s6 m5 l3">
+                                <input name="u_grade_sem_year" type="radio" id="t1" />
+                                <label for="t1">Año</label>
+                                <input name="u_grade_sem_year" type="radio" id="t2" />
+                                <label for="t2">Sem</label>
+                            </div>
+                            <div class="input-field col s12 m6 l3">
+                                <input id="u_grade_t" type="text" name="u_grade_t">
+                                <label for="u_grade_t">Tipo de Grado</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="u_lic" type="text" name="u_lic">
+                                <label for="u_lic">Carrera</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="u_mat" type="text" name="u_mat">
+                                <label for="u_mat">Matrícula</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="u_school" type="text" name="u_school">
+                                <label for="u_school">Escuela</label>
+                            </div>
+                            <div class="input-field col s12 m6 l4">
+                                <input id="user_t" type="text" name="user_t">
+                                <label for="user_t">Tipo de Usuario</label>
+                            </div>
                         </div>
-                        <div class="col s12 m4 l4 input-field"><button id="r_sender" class="btn">Consultar</button></div>
+                        <div class="col s12 m4 l4 input-field"><button id="r_sender" class="btn teal">Consultar</button></div>
                     </div>
+                    <div class="col s12" id="r_Resultados1"></div>
+                    <div class="col s12" id="r_filter1"></div>
+                    <div class="col s12" id="r_tab1"></div>
                 </div>
             </div>
             <div id="Administrar" class="col s12 red">Crear y dar privilegios a usuarios ademas de cambios de contraseña etc</div>
