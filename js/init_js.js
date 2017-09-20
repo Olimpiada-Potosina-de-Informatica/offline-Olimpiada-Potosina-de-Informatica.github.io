@@ -1,8 +1,10 @@
-var config = {
-    apiKey: "AIzaSyD2_21Lv0eWbqgCQpDSvTgHH8Thp9uNaHg",
-    authDomain: "olimpiadapotosinadeinfor-49483.firebaseapp.com",
-    databaseURL: "https://olimpiadapotosinadeinfor-49483.firebaseio.com",
-    storageBucket: "olimpiadapotosinadeinfor-49483.appspot.com",
-    messagingSenderId: "810470494434"
-};
-firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyChoWxqJFL4czdm_2uuHpv1HIYdlLmWZqo",
+    authDomain: "copidata2017.firebaseapp.com",
+    databaseURL: "https://copidata2017.firebaseio.com",
+    projectId: "copidata2017",
+    storageBucket: "copidata2017.appspot.com",
+    messagingSenderId: "60705913778"
+  };
+  firebase.initializeApp(config);
